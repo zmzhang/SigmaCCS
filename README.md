@@ -2,7 +2,7 @@
 
 ## SigmaCCS
 
-This is the code repo for the paper *Highly accurate and large-scale collision cross section prediction with graph neural network for compound identification*.  We developed a method named Structure included graph merging with adduct method for CCS prediction ([SigmaCCS](sigma)), and a [dataset](https://doi.org/10.5281/zenodo.5501673) including 282 million CCS values for three different ion adducts ([M+H]+, [M+Na]+ and [M-H]-) of 94 million compounds. For each molecule, there are "Pubchem ID", "SMILES", "InChi", "Inchikey", "Molecular Weight", "Exact Mass", "Formula" and predicted CCS values of three adduct ion types ([M+H]+,[M-H]-,[M+Na]+). 
+This is the code repo for the paper *Highly accurate and large-scale collision cross section prediction with graph neural network for compound identification*.  We developed a method named Structure included graph merging with adduct method for CCS prediction ([SigmaCCS](sigma)), and a [dataset](https://doi.org/10.5281/zenodo.5501673) including 282 million CCS values for three different ion adducts ([M+H]+, [M+Na]+ and [M-H]-) of 94 million compounds. For each molecule, there are "Pubchem ID", "SMILES", "InChi", "Inchikey", "Molecular Weight", "Exact Mass", "Formula" and predicted CCS values of three adduct ion types. 
 
 ### Package required: 
 We recommend to use [conda](https://conda.io/docs/user-guide/install/download.html) and [pip](https://pypi.org/project/pip/).
