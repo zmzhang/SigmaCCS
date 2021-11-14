@@ -2,19 +2,7 @@
 
 ## SigmaCCS
 
-This is the code base for the paper *Ion Mobility Collision Cross Section Prediction Using **S**tructure **I**ncluded **G**raph **M**erged with **A**dduct.*  We developed a model named SigmaCCS which can be used to predict CCS of compounds,and a [dataset](https://zenodo.org/record/5501674#.YUMnE44zZPZ) including CCS values of ~90,000,000 molecules from Pubchem was formed.For each molecules,there are "Pubchem ID","SMILES","InChi","Inchikey","Molecular Weight","Exact Mass","Formula"and predicted CCS values of three adduct ion type ([M+H]+,[M-H]-,[M+Na]+). Our paper also uses the [GNN-RT](https://github.com/Qiong-Yang/GNN-RT).
-
-- sigma.py
-- GraphData.py
-- model.py
-- *data Folder*:  
-    - TrainData.csv
-    - TestData.csv
-    - TestData-pred.csv (Predicted results)
-- *model Folder*:
-    - model.h5
-- *parameter Folder*:
-    - parameter.pkl 
+This is the code repo for the paper *Highly accurate and large-scale collision cross section prediction with graph neural network for compound identification*.  We developed a method named Structure included graph merging with adduct method for CCS prediction (SigmaCCS), and a [dataset](https://doi.org/10.5281/zenodo.5501673) including 282 million CCS values for three different ion adducts ([M+H]+, [M+Na]+ and [M-H]-) of 94 million compounds. For each molecule, there are "Pubchem ID", "SMILES", "InChi", "Inchikey", "Molecular Weight", "Exact Mass", "Formula" and predicted CCS values of three adduct ion type ([M+H]+,[M-H]-,[M+Na]+). 
 
 ### Package required: 
 We recommend to use [conda](https://conda.io/docs/user-guide/install/download.html) and [pip](https://pypi.org/project/pip/).
@@ -23,10 +11,10 @@ We recommend to use [conda](https://conda.io/docs/user-guide/install/download.ht
 - [tensorflow](https://www.tensorflow.org) 2.4.0
 - [spektral](https://graphneural.network/) 1.0.5
 
-By using the `requirements/conda/requirements.txt`, `requirements/pip/requirements.txt` file, it will update all your packages to the correct version.
+By using the `requirements/conda/requirements.txt`, `requirements/pip/requirements.txt` file, it will install all the required packages.
 
 ## Data pre-processing
-SigmaCCS is a model for predicting CCS based on graph neural networks, so we need to convert SMILES strings to Graph. The related method is shown in `GraphData.py`           
+SigmaCCS is a model for predicting CCS based on graph neural networks, so we need to convert SMILES strings to Graph. The related method is shown in `sigma/GraphData.py`           
 
 **1.** Generate 3D conformations of molecules. 
 
@@ -43,7 +31,7 @@ SigmaCCS is a model for predicting CCS based on graph neural networks, so we nee
 - [EmbedMultipleConfs](https://www.rdkit.org/docs/source/rdkit.Chem.rdDistGeom.html?highlight=embedmultipleconfs#rdkit.Chem.rdDistGeom.EmbedMultipleConfs), use distance geometry to obtain multiple sets of coordinates for a molecule.
 - [MMFFOptimizeMoleculeConfs](https://www.rdkit.org/docs/source/rdkit.Chem.rdForceFieldHelpers.html?highlight=mmffoptimizemoleculeconfs#rdkit.Chem.rdForceFieldHelpers.MMFFOptimizeMoleculeConfs), uses MMFF to optimize all of a molecule’s conformations   
 
-**2.** Save relevant parameters. For details, see`parameter.py`.    
+**2.** Save relevant parameters. For details, see`sigma/parameter.py`.    
 - adduct set  
 - atoms set   
 - Minimum value in atomic coordinates   
@@ -85,18 +73,18 @@ The CCS prediction of the molecule is obtained by inputting Graph and Adduct int
 The example codes for usage is included in the [test.ipynb](test.ipynb)
 
 ## Others
-The following files are in the `others/` folder
+The following files are in the [others](others) folder:
 - [Attribute Analysis.ipynb](others/Attribute%20Analysis.ipynb). analyze the attribute importance
 - [UMAP.ipynb](others/UMAP.ipynb). visualize the learned representation with UMAP
 - [UMAPDataset.py](others/UMAPDataset.py). for generating graph datasets.
 - [theoretical calculation.ipynb](others/theoretical%20calculation.ipynb). investigate of the relationship between SigmaCCS and theoretical calculation
 - [Filtering.ipynb](others/Filtering.ipynb). Filtering of target unknown molecules based on the CCS and *mz* of the molecules
-- *CFM-ID4*. the code for generating MS/MS spectra with CFM-ID 4.0.
-- *GNN-RT*:
+- *[CFM-ID4](others/CFM-ID4)*. the code for generating MS/MS spectra with CFM-ID 4.0.
+- *[GNN-RT](others/GNN-RT)*:
     - [README.md](others/GNN-RT/README.md)
-- *model*:
+- *[model](model)*:
     - model.h5
-- *data*:
+- *[data](others/data)*:
     - *Attribute importance data*
         - *Attribute importance* (data.csv)
         - *Coordinate data* (Store the 3D coordinate data of all molecules in data.csv)
@@ -117,7 +105,7 @@ The following files are in the `others/` folder
 
 ## Slurm script
 slurm script for generating CCS of PubChem in HPC cluster.
-The following files are in the `slurm/` folder
+The following files are in the [`slurm`](slurm) folder
 - mp.py
 - multiple_job.sh (Batch generation of slurm script files)
 - normal_job.sh (Submit the slurm script for the mp.py file)
