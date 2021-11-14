@@ -2,7 +2,7 @@
 
 ## SigmaCCS
 
-This is the code repo for the paper *Highly accurate and large-scale collision cross section prediction with graph neural network for compound identification*.  We developed a method named Structure included graph merging with adduct method for CCS prediction (SigmaCCS), and a [dataset](https://doi.org/10.5281/zenodo.5501673) including 282 million CCS values for three different ion adducts ([M+H]+, [M+Na]+ and [M-H]-) of 94 million compounds. For each molecule, there are "Pubchem ID", "SMILES", "InChi", "Inchikey", "Molecular Weight", "Exact Mass", "Formula" and predicted CCS values of three adduct ion type ([M+H]+,[M-H]-,[M+Na]+). 
+This is the code repo for the paper *Highly accurate and large-scale collision cross section prediction with graph neural network for compound identification*.  We developed a method named Structure included graph merging with adduct method for CCS prediction ([SigmaCCS](sigma)), and a [dataset](https://doi.org/10.5281/zenodo.5501673) including 282 million CCS values for three different ion adducts ([M+H]+, [M+Na]+ and [M-H]-) of 94 million compounds. For each molecule, there are "Pubchem ID", "SMILES", "InChi", "Inchikey", "Molecular Weight", "Exact Mass", "Formula" and predicted CCS values of three adduct ion types ([M+H]+,[M-H]-,[M+Na]+). 
 
 ### Package required: 
 We recommend to use [conda](https://conda.io/docs/user-guide/install/download.html) and [pip](https://pypi.org/project/pip/).
@@ -14,7 +14,7 @@ We recommend to use [conda](https://conda.io/docs/user-guide/install/download.ht
 By using the `requirements/conda/requirements.txt`, `requirements/pip/requirements.txt` file, it will install all the required packages.
 
 ## Data pre-processing
-SigmaCCS is a model for predicting CCS based on graph neural networks, so we need to convert SMILES strings to Graph. The related method is shown in `sigma/GraphData.py`           
+SigmaCCS is a model for predicting CCS based on graph neural networks, so we need to convert SMILES strings to Graph. The related method is shown in [`sigma/GraphData.py`](simgma/GraphData.py)           
 
 **1.** Generate 3D conformations of molecules. 
 
@@ -31,7 +31,7 @@ SigmaCCS is a model for predicting CCS based on graph neural networks, so we nee
 - [EmbedMultipleConfs](https://www.rdkit.org/docs/source/rdkit.Chem.rdDistGeom.html?highlight=embedmultipleconfs#rdkit.Chem.rdDistGeom.EmbedMultipleConfs), use distance geometry to obtain multiple sets of coordinates for a molecule.
 - [MMFFOptimizeMoleculeConfs](https://www.rdkit.org/docs/source/rdkit.Chem.rdForceFieldHelpers.html?highlight=mmffoptimizemoleculeconfs#rdkit.Chem.rdForceFieldHelpers.MMFFOptimizeMoleculeConfs), uses MMFF to optimize all of a molecule’s conformations   
 
-**2.** Save relevant parameters. For details, see`sigma/parameter.py`.    
+**2.** Save relevant parameters. For details, see [`sigma/parameter.py`](sigma/parameter.py).    
 - adduct set  
 - atoms set   
 - Minimum value in atomic coordinates   
@@ -50,9 +50,10 @@ SigmaCCS is a model for predicting CCS based on graph neural networks, so we nee
 - edge_features : Edge feature matrix
 
 ## Model training
-Train the model based on your own training dataset.
+Train the model based on your own training dataset with [Model_train](https://github.com/zmzhang/SigmaCCS/blob/main/sigma/sigma.py#L52) function.
 
     Model_train(ifile, ParameterPath, ofile, ofileDataPath, EPOCHS, BATCHS, Vis, All_Atoms=[], adduct_SET=[])
+
 *Optionnal args*
 - ifile : File path for storing the data of smiles and adduct.
 - ofile : File path where the model is stored.
@@ -60,9 +61,10 @@ Train the model based on your own training dataset.
 - ofileDataPath : File path for storing model parameter data.
 
 ## Predicting CCS
-The CCS prediction of the molecule is obtained by inputting Graph and Adduct into the already trained SigmaCCS model.
+The CCS prediction of the molecule is obtained by feeding the Graph and Adduct into the already trained SigmaCCS model with [Model_prediction](https://github.com/zmzhang/SigmaCCS/blob/main/sigma/sigma.py#L6) function.
 
     Model_prediction(ifile, ParameterPath, mfileh5, ofile, Isevaluate = 0)
+
 *Optionnal args*
 - ifile : File path for storing the data of smiles and adduct
 - ParameterPath : File path for storing model parameter data
