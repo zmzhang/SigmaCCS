@@ -13,6 +13,11 @@ We recommend to use [conda](https://conda.io/docs/user-guide/install/download.ht
 
 By using the [`requirements/conda/environment.yml`](requirements/conda/environment.yml), [`requirements/pip/requirements.txt`](requirements/pip/requirements.txt) file, it will install all the required packages.
 
+    git clone https://github.com/zmzhang/SigmaCCS.git
+    cd SigmaCCS
+    conda env create -f requirements/conda/environment.yml
+    conda activate sigma
+
 ## Data pre-processing
 SigmaCCS is a model for predicting CCS based on graph neural networks, so we need to convert SMILES strings to Graph. The related method is shown in [`sigma/GraphData.py`](simgma/GraphData.py)           
 
