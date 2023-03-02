@@ -81,6 +81,10 @@ The following files are in the [others](others) folder:
 - [UMAPDataset.py](others/UMAPDataset.py). for generating graph datasets.
 - [theoretical calculation.ipynb](others/theoretical%20calculation.ipynb). investigate of the relationship between SigmaCCS and theoretical calculation
 - [Filtering.ipynb](others/Filtering.ipynb). Filtering of target unknown molecules based on the CCS and *mz* of the molecules
+- [90 and 180 degrees rotations.ipynb](others/90%20and%20180%20degrees%20rotations.ipynb). Performance on the test set with 90 and 180 degrees rotations
+- [Completely random rotations.ipynb](others/Completely%20random%20rotations.ipynb). Performance on the test set with completely random rotations
+- [Visualization of the 3D conformers using different seeds of ETKDG.ipynb](others/Visualization%20of%20the%203D%20conformers%20using%20different%20seeds%of%20ETKD.ipynb)
+- [RotationMatrix.py](others/RotationMatrix.py). define rotation matrix for rotating the molecules
 - *[CFM-ID4](others/CFM-ID4)*. the code for generating MS/MS spectra with CFM-ID 4.0.
 - *[GNN-RT](others/GNN-RT)*:
     - [README.md](others/GNN-RT/README.md)
@@ -100,7 +104,12 @@ The following files are in the [others](others) folder:
         - LJ_data.csv (Get the LJ interaction parameters of different elements according to LJ_data.csv)
         - *Coordinate data* (Store the 3D coordinate data of all molecules in data.csv)
     - *Filtering data* 
-        - data.csv 
+        - data.csv
+- *[MultidimensionalFiltering](others/MultidimensionalFiltering)*:
+    - *[Example.ipynb](others/MultidimensionalFiltering/Example.ipynb)*. Taken the lipid (PubChem CID: 114944) as an example to show the multidimensional filtering assisted by SigmaCCS
+    - *[LipidBlastPredCCS.xlsx](others/MultidimensionalFiltering/LipidBlastPredCCS.xlsx)*. the predicted CCS values of the lipids in the LipidBlast
+    - *[MListWithPredictedRTs_329.xlsx](others/MultidimensionalFiltering/MListWithPredictedRTs_329.xlsx)*. retention times of the molecules in the MList of the lipid (PubChem CID: 114944). Please refer to github GNN-RT repository for details of RT prediction
+    - *[Mouse_lung_adduct_negative.xlsx](others/MultidimensionalFiltering/Mouse_lung_adduct_negative.xlsx)*. the mouse lung dataset with 761 lipids in negative ion mode after the removal of unpredictable adducts and empty SMILES strings
 
 ### Package required: 
 - [UMAP](https://github.com/lmcinnes/umap) 0.5.1
