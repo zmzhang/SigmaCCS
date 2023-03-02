@@ -83,7 +83,7 @@ The following files are in the [others](others) folder:
 - [Filtering.ipynb](others/Filtering.ipynb). Filtering of target unknown molecules based on the CCS and *mz* of the molecules
 - [90 and 180 degrees rotations.ipynb](others/90%20and%20180%20degrees%20rotations.ipynb). Performance on the test set with 90 and 180 degrees rotations
 - [Completely random rotations.ipynb](others/Completely%20random%20rotations.ipynb). Performance on the test set with completely random rotations
-- [Visualization of the 3D conformers using different seeds of ETKDG.ipynb](others/Visualization%20of%20the%203D%20conformers%20using%20different%20seeds%of%20ETKD.ipynb)
+- [Visualization of the 3D conformers using different seeds of ETKDG.ipynb](others/Visualization%20of%20the%203D%20conformers%20using%20different%20seeds%20of%20ETKDG.ipynb)
 - [RotationMatrix.py](others/RotationMatrix.py). define rotation matrix for rotating the molecules
 - *[CFM-ID4](others/CFM-ID4)*. the code for generating MS/MS spectra with CFM-ID 4.0.
 - *[GNN-RT](others/GNN-RT)*:
@@ -125,3 +125,4 @@ The following files are in the [`slurm`](slurm) folder
 - zmzhang@csu.edu.cn
 - youjiazhang126@163.com
 - renfengguo05@foxmail.com
+- 212311021@csu.edu.cn
