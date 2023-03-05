@@ -27,7 +27,7 @@ def Bais(y,r):
     * r : y_pred
     '''
     RelativeError = [abs(y[i]-r[i])/y[i] for i in range(len(y))]
-    R2_Score = r2_score(r,y)
+    R2_Score = r2_score(y,r)
     # print("R2 Score :", R2_Score, '\n')
     # print("Median Relative Error :", np.median(RelativeError) * 100, '%')
     # print("Mean Relative Error :", np.mean(RelativeError) * 100, '%')
