@@ -32,10 +32,3 @@ def Rz(theta):
     ])
     return R_z
 
-def R2_MeRE(y_true, y_pred): 
-    RelativeError = [abs(y_pred[i]-y_true[i])/y_true[i] for i in range(len(y_true))]
-    R2_Score = r2_score(y_true,y_pred)
-    print("R2 Score :", R2_Score)
-    print("Median Relative Error :", np.median(RelativeError) * 100, '%')
-    #print("Mean Relative Error :", np.mean(RelativeError) * 100, '%')
-    return R2_Score, np.median(RelativeError) * 100
