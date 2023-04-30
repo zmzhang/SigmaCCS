@@ -17,7 +17,7 @@ import time, random
 import sys
 np.set_printoptions(suppress=True)
 
-def Bais(y,r):
+def Metrics(y,r):
     '''
     * The gap between the predicted result and the real value of the evaluation model
     *
